@@ -4,7 +4,7 @@ local Plugins=require('plugins.lua')
 local NDB=require('ndb.lua')
 local Firecast=require('firecast.lua')
 local GUI=require('gui.lua')
-local M={version='1.0.0',moduleId='MestreRPG.SWSE.NPCController',
+local M={version='1.0.1',moduleId='MestreRPG.SWSE.NPCController',
   repository='kaalflash12/fichasRRPG',
   manifestURL='https://raw.githubusercontent.com/kaalflash12/fichasRRPG/main/ControladorNPC/update.txt',
   latestRPKURL='https://raw.githubusercontent.com/kaalflash12/fichasRRPG/main/releases/CONTROLADOR_NPC_STARWARS.rpk',

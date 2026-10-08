@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form name="frmSWSENPCSheet" formType="sheetTemplate" dataType="MestreRPG.SWSE.NPCController.Panel" title="STARWARS — CONTROLE DO MESTRE (NPCs)" align="client" theme="dark">
   <import file="NPCPanel.xml"/>
+  <event name="onShow">self._npcOpen=true;self:npcStart()</event>
+  <event name="onHide">self._npcOpen=false;self:npcStop()</event>
+  <event name="onNodeReady">if self._npcOpen or self.isShowing then self:npcStart() end</event>
+  <event name="onNodeUnready">self:npcStop()</event>
 </form>

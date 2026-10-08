@@ -9,7 +9,7 @@
   <rectangle align="client" color="#061019"/>
   <layout align="client" margins="{left=8,right=8,top=8,bottom=8}">
     <rectangle align="top" height="34" color="#0A202C" strokeColor="#286074" strokeSize="1" padding="{left=10,right=5}" margins="{bottom=8}">
-      <label name="npcHeaderTitle" align="client" text="NPCs // MESTRE    1.0.0" fontSize="12" fontStyle="bold" fontColor="#EFC56B" vertTextAlign="center" hitTest="false"/>
+      <label name="npcHeaderTitle" align="client" text="NPCs // MESTRE    1.0.1" fontSize="12" fontStyle="bold" fontColor="#EFC56B" vertTextAlign="center" hitTest="false"/>
       <rectangle name="swseUpdateButton" align="right" width="96" color="#04202C" strokeColor="#286074" strokeSize="1" cursor="handPoint" margins="{top=3,bottom=3,left=6}">
         <label align="client" text="FIRECAST" fontSize="10" fontColor="#D5EFF6" horzTextAlign="center" vertTextAlign="center" hitTest="false"/>
         <event name="onClick">self:npcUpdate()</event>
@@ -20,7 +20,7 @@
       </rectangle>
       <rectangle name="npcRefreshButton" align="right" width="92" color="#04202C" strokeColor="#286074" strokeSize="1" cursor="handPoint" margins="{top=3,bottom=3,left=6}">
         <label align="client" text="RECARREGAR" fontSize="10" fontColor="#D5EFF6" horzTextAlign="center" vertTextAlign="center" hitTest="false"/>
-        <event name="onClick">self:npcRefresh()</event>
+        <event name="onClick">self:npcRefresh(true)</event>
       </rectangle>
     </rectangle>
     <label name="swseUpdateStatus" align="bottom" height="36" text="Atualização deste controlador: canal próprio no GitHub." fontSize="10" fontColor="#85A9B5" wordWrap="true" vertTextAlign="center"/>
@@ -92,8 +92,4 @@
   <dataScopeBox name="npcNodeWatch" visible="false">
     <dataLink fields="{'nome','raca','nep','pvTotal','pvMax','pvTemporario','conditionStep','conditionPenalty','trRef','trFort','trVon','dvs','iniciativa','forcePoints','destinyPoints','defeatedState','statBlockText'}"><event name="onChange">self:npcPaint()</event></dataLink>
   </dataScopeBox>
-  <event name="onShow">self:npcStart()</event>
-  <event name="onHide">self:npcStop()</event>
-  <event name="onNodeReady">if self.isShowing then self:npcStart() end</event>
-  <event name="onNodeUnready">self:npcStop()</event>
 </group>

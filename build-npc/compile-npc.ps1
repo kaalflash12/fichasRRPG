@@ -24,10 +24,12 @@ try {
 $files = @(Get-ChildItem -LiteralPath (Join-Path $sourceDir 'output') -Filter '*.rpk' -File)
 if ($files.Count -ne 1) { throw 'Esperado exatamente um RPK do controlador' }
 New-Item -ItemType Directory -Path './releases' -Force | Out-Null
-$dest = Join-Path (Get-Location) 'releases/CONTROLADOR_NPC_STARWARS_1.0.0.rpk'
+[xml]$module = Get-Content -LiteralPath (Join-Path $sourceDir 'module.xml')
+$version = [string]$module.module.version
+$dest = Join-Path (Get-Location) ('releases/CONTROLADOR_NPC_STARWARS_' + $version + '.rpk')
 Copy-Item -LiteralPath $files[0].FullName -Destination $dest
 python ./build-npc/validate-release.py $sourceDir $dest ./ControladorNPC/tests
 if ($LASTEXITCODE -ne 0) { throw 'Validação do controlador falhou' }
 Copy-Item -LiteralPath $dest -Destination './releases/CONTROLADOR_NPC_STARWARS.rpk' -Force
-$manifest = "SWSE-UPDATE-1`nmodule=MestreRPG.SWSE.NPCController`nversion=1.0.0`nrpk=https://raw.githubusercontent.com/kaalflash12/fichasRRPG/main/releases/CONTROLADOR_NPC_STARWARS_1.0.0.rpk`n"
+$manifest = "SWSE-UPDATE-1`nmodule=MestreRPG.SWSE.NPCController`nversion=$version`nrpk=https://raw.githubusercontent.com/kaalflash12/fichasRRPG/main/releases/CONTROLADOR_NPC_STARWARS_$version.rpk`n"
 [IO.File]::WriteAllText((Join-Path (Get-Location) 'ControladorNPC/update.txt'), $manifest, [Text.UTF8Encoding]::new($false))

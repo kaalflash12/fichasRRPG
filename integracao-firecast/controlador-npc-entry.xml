@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Proposta somente; não é um cadastro aprovado no Firecast. -->
-<element id="MestreRPG.SWSE.NPCController" name="STARWARS — CONTROLADOR NPC DO MESTRE" version="1.0.0" url="https://raw.githubusercontent.com/kaalflash12/fichasRRPG/main/releases/CONTROLADOR_NPC_STARWARS.rpk" fileName="CONTROLADOR_NPC_STARWARS.rpk" repositoryPath="Sheets/StarWarsNPCController/" author="MestreRPG" description="Plugin separado para o mestre controlar NPCs Star Wars Saga da Biblioteca da mesa.">
+<element id="MestreRPG.SWSE.NPCController" name="STARWARS — CONTROLADOR NPC DO MESTRE" version="1.0.1" url="https://raw.githubusercontent.com/kaalflash12/fichasRRPG/main/releases/CONTROLADOR_NPC_STARWARS.rpk" fileName="CONTROLADOR_NPC_STARWARS.rpk" repositoryPath="Sheets/StarWarsNPCController/" author="MestreRPG" description="Plugin separado para o mestre controlar NPCs Star Wars Saga da Biblioteca da mesa.">
   <info lang="pt-BR" name="STARWARS — CONTROLADOR NPC DO MESTRE" author="MestreRPG" site="https://github.com/kaalflash12/fichasRRPG" />
   <dataTypes>
     <dataType id="MestreRPG.SWSE.NPCController.Dock" title="STARWARS — CONTROLADOR NPC DO MESTRE" formType="tablesDock"><info title="STARWARS — CONTROLADOR NPC DO MESTRE" /></dataType>

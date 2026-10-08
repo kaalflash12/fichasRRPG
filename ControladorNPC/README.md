@@ -2,6 +2,8 @@
 
 Plugin **separado** da ficha do personagem, com RPK e canal de atualização próprios.
 
+Versão **1.0.1**: corrige a abertura do painel e a inicialização após o carregamento da ficha; RECARREGAR também recupera uma instância ainda não iniciada.
+
 Depois de instalar, abra **STARWARS — CONTROLADOR NPC DO MESTRE** nas janelas acopláveis da mesa. O Firecast exige Gold, ou uma mesa cujo criador tenha Gold Plus, para esse tipo de painel. A alternativa incluída no mesmo RPK é criar uma ficha do modelo **STARWARS — CONTROLE DO MESTRE (NPCs)** na Biblioteca e abri-la na mesa. O controlador exige o modo **+mestre** nas duas formas.
 
 ## Uso

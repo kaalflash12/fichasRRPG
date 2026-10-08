@@ -1,8 +1,8 @@
 # fichasRRPG
 
-## Controlador NPC do mestre — 1.0.0 (RPK separado)
+## Controlador NPC do mestre — 1.0.1 (RPK separado)
 
-[RPK do controlador](releases/CONTROLADOR_NPC_STARWARS.rpk) · [RPK 1.0.0](releases/CONTROLADOR_NPC_STARWARS_1.0.0.rpk) · [Como usar](ControladorNPC/README.md) · [Código-fonte](ControladorNPC/source) · [Validação CI](releases/CONTROLADOR_NPC_STARWARS_1.0.0_VALIDACAO.json) · [Teste nativo](releases/CONTROLADOR_NPC_STARWARS_1.0.0_TESTE_NATIVO.json)
+[RPK do controlador](releases/CONTROLADOR_NPC_STARWARS.rpk) · [RPK 1.0.1](releases/CONTROLADOR_NPC_STARWARS_1.0.1.rpk) · [Como usar](ControladorNPC/README.md) · [Código-fonte](ControladorNPC/source) · [Validação CI](releases/CONTROLADOR_NPC_STARWARS_1.0.1_VALIDACAO.json) · [Teste nativo](releases/CONTROLADOR_NPC_STARWARS_1.0.1_TESTE_NATIVO.json)
 
 Plugin independente da ficha Star Wars. Busca NPCs da mesa, abre fichas completas sem forçar foco, ajusta PV e condição, organiza turnos/rodadas e guarda anotações privadas por mestre e mesa. Inclui painel da mesa e ficha de controle alternativa. O controle de PV usa valores líquidos/manuais; a resolução completa dos ataques permanece na ficha. O cadastro do controlador no Auto Updater oficial também está pendente.
 

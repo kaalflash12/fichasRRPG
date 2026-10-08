@@ -1,6 +1,6 @@
 local NDB=require('ndb.lua')
 local GUI=require('gui.lua')
-local M={version='1.0.0',characterType='MestreRPG.SWSE.Character'}
+local M={version='1.0.1',characterType='MestreRPG.SWSE.Character'}
 local names={'Normal','−1','−2','−5','−10 / metade do deslocamento','Inconsciente / indefeso'}
 local penalties={0,-1,-2,-5,-10,-10}
 local accents={['á']='a',['à']='a',['ã']='a',['â']='a',['ä']='a',['Á']='a',['À']='a',['Ã']='a',['Â']='a',['é']='e',['ê']='e',['É']='e',['Ê']='e',['í']='i',['Í']='i',['ó']='o',['ô']='o',['õ']='o',['Ó']='o',['Ô']='o',['Õ']='o',['ú']='u',['ü']='u',['Ú']='u',['Ü']='u',['ç']='c',['Ç']='c'}

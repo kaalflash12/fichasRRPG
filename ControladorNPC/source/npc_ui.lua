@@ -47,8 +47,11 @@ function M.bind(form,options)
     state.core=core;self.npcShell.visible=true;self.npcAccessMessage.visible=false
     self:npcRefresh();self:npcResize();return true
   end
-  function form:npcRefresh()
-    if not state.core then return end
+  function form:npcRefresh(recover)
+    if not state.core then
+      if recover then return self:npcStart() end
+      return
+    end
     state.core.onlyUnowned=self.npcFilter.value=='unowned'
     local _,err=state.core:refresh()
     state.page=1;self:npcRebuildList();self:npcPaint()
