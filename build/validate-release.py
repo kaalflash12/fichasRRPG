@@ -13,14 +13,15 @@ lua = LuaRuntime(unpack_returned_tuples=True)
 lua.globals().TEST_ROOT = source.as_posix()
 lua.execute((build / "mock-sdk.lua").read_text(encoding="utf-8"))
 passed = lua.execute((build / "updater-tests.lua").read_text(encoding="utf-8"))
-assert passed == 11, passed
+assert passed == 32, passed
 
 syntax = lua.eval("function(s,n) local f,e=load(s,n); return f~=nil,e end")
 with zipfile.ZipFile(package) as archive:
     assert archive.testzip() is None
     module = ET.fromstring(archive.read("module.xml"))
     assert module.findtext("id") == "MestreRPG.StarWarsSagaEdition"
-    assert module.findtext("version") == "7.3.4"
+    release_version = ET.parse(source / "module.xml").getroot().findtext("version")
+    assert module.findtext("version") == release_version == "7.3.5"
     updater = archive.read("swse_updater.lua")
     assert updater == (source / "swse_updater.lua").read_bytes()
     assert b"kaalflash12/fichasRRPG" in updater
@@ -35,9 +36,14 @@ with zipfile.ZipFile(package) as archive:
             chunks += 1
     forms = len([name for name in archive.namelist() if name.endswith(".lfm.lua")])
     assert forms == 19, forms
+    main = archive.read("FichaRPGmeister/FichaRPGmeister.lfm.lua")
+    assert b"swseDownloadButton" in main and b"swseUpdateButton" in main
+    assert b"installPlugin(" not in updater and b"requirePlugin(" not in updater
+    assert b"/autoupdater " in updater and b"openInBrowser" in updater
+    assert b"fxDefaultOffApplied733" in main
 
 report = {
-    "version": "7.3.4",
+    "version": release_version,
     "repository": "kaalflash12/fichasRRPG",
     "rdk_lint_exit": 0,
     "rdk_compile_exit": 0,
@@ -47,10 +53,11 @@ report = {
     "sha256": hashlib.sha256(package.read_bytes()).hexdigest(),
     "bytes": package.stat().st_size,
     "importer_unchanged_from_7_3_3": True,
-    "validation_scope": "RDK compile, Lua syntax and updater logic under SDK mock; no Firecast client installation test.",
-    "native_installation_authorization": "Not established by this build; enforced by Firecast.Plugins.installPlugin.",
+    "validation_scope": "RDK compile, Lua syntax and 32 updater tests under SDK mock. Native catalog registration and real native installation are not established by CI.",
+    "update_paths": ["Public Auto Updater command for an approved catalog entry", "RPGmeister-style RPK download in browser"],
+    "official_catalog_registration": "Pending maintainer approval; not granted by this build.",
 }
-package.with_name("STARWARS_SAGA_7.3.4_VALIDACAO.json").write_text(
+package.with_name("STARWARS_SAGA_" + release_version + "_VALIDACAO.json").write_text(
     json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
 )
 print(json.dumps(report, ensure_ascii=True))

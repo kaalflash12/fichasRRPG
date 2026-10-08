@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Proposta de cadastro, pendente de aprovação pelos mantenedores do catálogo oficial. -->
+<element id="MestreRPG.StarWarsSagaEdition" name="STARWARS-SAGA D/L" version="7.3.5" url="https://raw.githubusercontent.com/kaalflash12/fichasRRPG/main/releases/STARWARS_SAGA.rpk" fileName="STARWARS_SAGA.rpk" repositoryPath="Sheets/StarWarsSaga/" author="MestreRPG" description="Ficha Star Wars Saga Edition com Hangar, importação XML RPGmeister 3.5, busca por nome e FX opcionais.">
+  <info lang="pt-BR" name="STARWARS-SAGA D/L" author="MestreRPG" site="https://github.com/kaalflash12/fichasRRPG" />
+  <dataTypes>
+    <dataType id="MestreRPG.SWSE.Character" title="STARWARS-SAGA D/L" formType="sheetTemplate"><info title="STARWARS-SAGA D/L" /></dataType>
+    <dataType id="MestreRPG.SWSE.Vehicle" title="STARWARS-SAGA D/L — VEÍCULO / NAVE" formType="sheetTemplate"><info title="STARWARS-SAGA D/L — VEÍCULO / NAVE" /></dataType>
+  </dataTypes>
+</element>
