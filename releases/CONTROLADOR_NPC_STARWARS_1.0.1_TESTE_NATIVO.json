@@ -1,0 +1,23 @@
+{
+  "module": "MestreRPG.SWSE.NPCController",
+  "version": "1.0.1",
+  "timestamp_utc": "2026-10-08T20:52:02.228119+00:00",
+  "state": "PASS",
+  "native_core_fixture_tests": 42,
+  "native_ui_checks": 24,
+  "native_ui_failures": 0,
+  "root_lifecycle_bindings_checked": 8,
+  "native_controller_node_ready_initialized": true,
+  "master_access_confirmed": true,
+  "controller_room_context_checked": true,
+  "real_npc_ndb_opened": false,
+  "existing_character_data_changed": false,
+  "screen_control_used": false,
+  "rdk_install_exit": 0,
+  "official_catalog_registration": "PENDING",
+  "validation_scope": "Native SDK constructors, compiled lifecycle callbacks and fixture UI checks; actual onNodeReady initialized an offscreen controller using its room NDB and master context. No visible user window inspected and no NPC NDB opened or modified.",
+  "published_rpk_sha256": "26379934ca69011826c860eeb4eb9e0cbb67f81b973de11f80b0d2e000943303",
+  "desktop_rpk_equals_published": true,
+  "installed_payload_equals_published": true,
+  "temporary_diagnostics_removed": true
+}
