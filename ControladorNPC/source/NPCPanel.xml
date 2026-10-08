@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<group>
+  <style><![CDATA[
+    label { fontFamily: Consolas; textTrimming: none; }
+    edit { fontFamily: Consolas; transparent: true; fontColor: #C8F8FF; }
+    comboBox { fontFamily: Consolas; transparent: true; fontColor: #C8F8FF; }
+  ]]></style>
+  <script><![CDATA[require('npc_ui.lua').bind(self)]]></script>
+  <rectangle align="client" color="#061019"/>
+  <layout align="client" margins="{left=8,right=8,top=8,bottom=8}">
+    <rectangle align="top" height="34" color="#0A202C" strokeColor="#286074" strokeSize="1" padding="{left=10,right=5}" margins="{bottom=8}">
+      <label name="npcHeaderTitle" align="client" text="NPCs // MESTRE    1.0.0" fontSize="12" fontStyle="bold" fontColor="#EFC56B" vertTextAlign="center" hitTest="false"/>
+      <rectangle name="swseUpdateButton" align="right" width="96" color="#04202C" strokeColor="#286074" strokeSize="1" cursor="handPoint" margins="{top=3,bottom=3,left=6}">
+        <label align="client" text="FIRECAST" fontSize="10" fontColor="#D5EFF6" horzTextAlign="center" vertTextAlign="center" hitTest="false"/>
+        <event name="onClick">self:npcUpdate()</event>
+      </rectangle>
+      <rectangle name="npcDownloadButton" align="right" width="108" color="#04202C" strokeColor="#286074" strokeSize="1" cursor="handPoint" margins="{top=3,bottom=3,left=6}">
+        <label align="client" text="BAIXAR RPK" fontSize="10" fontColor="#D5EFF6" horzTextAlign="center" vertTextAlign="center" hitTest="false"/>
+        <event name="onClick">self:npcDownload()</event>
+      </rectangle>
+      <rectangle name="npcRefreshButton" align="right" width="92" color="#04202C" strokeColor="#286074" strokeSize="1" cursor="handPoint" margins="{top=3,bottom=3,left=6}">
+        <label align="client" text="RECARREGAR" fontSize="10" fontColor="#D5EFF6" horzTextAlign="center" vertTextAlign="center" hitTest="false"/>
+        <event name="onClick">self:npcRefresh()</event>
+      </rectangle>
+    </rectangle>
+    <label name="swseUpdateStatus" align="bottom" height="36" text="Atualização deste controlador: canal próprio no GitHub." fontSize="10" fontColor="#85A9B5" wordWrap="true" vertTextAlign="center"/>
+    <label name="npcStatus" align="bottom" height="38" text="Abra o controle dentro da mesa como mestre." fontSize="10" fontColor="#A8DDE9" wordWrap="true" vertTextAlign="center"/>
+    <label name="npcAccessMessage" align="client" text="CONTROLE DO MESTRE\n\nAbra este painel na mesa como mestre (+mestre)." fontSize="14" fontColor="#A8DDE9" wordWrap="true" horzTextAlign="center" vertTextAlign="center"/>
+    <layout name="npcShell" align="client" visible="false">
+      <event name="onResize">self:npcResize()</event>
+      <rectangle name="npcIndex" align="left" width="286" color="#081925" strokeColor="#1B5268" strokeSize="1" padding="{left=8,right=8,top=6,bottom=6}" margins="{right=8}">
+        <label align="top" height="26" text="BUSCAR NPC POR NOME" fontSize="11" fontStyle="bold" fontColor="#EFC56B"/>
+        <rectangle align="top" height="30" color="#021019" strokeColor="#1B718C" strokeSize="1" margins="{bottom=6}">
+          <edit name="npcSearch" align="client" margins="{left=8,right=6,top=2,bottom=2}"><event name="onChange">self:npcQueryChanged()</event></edit>
+        </rectangle>
+        <comboBox name="npcFilter" align="top" height="28" items="{'NPCs e minhas fichas','Somente NPCs sem dono'}" values="{'mine','unowned'}" value="mine"><event name="onChange">self:npcRefresh()</event></comboBox>
+        <comboBox name="npcEncounterFilter" align="top" height="28" items="{'Todos os NPCs','NPCs do encontro'}" values="{'all','encounter'}" value="all"><event name="onChange">self:npcQueryChanged()</event></comboBox>
+        <layout align="bottom" height="30" margins="{top=6}">
+          <rectangle name="npcPrevPage" align="left" width="38" color="#04202C" strokeColor="#286074" strokeSize="1" cursor="handPoint"><label align="client" text="‹" fontSize="16" fontColor="#A8DDE9" horzTextAlign="center" hitTest="false"/><event name="onClick">self:npcChangePage(-1)</event></rectangle>
+          <rectangle name="npcNextPage" align="right" width="38" color="#04202C" strokeColor="#286074" strokeSize="1" cursor="handPoint"><label align="client" text="›" fontSize="16" fontColor="#A8DDE9" horzTextAlign="center" hitTest="false"/><event name="onClick">self:npcChangePage(1)</event></rectangle>
+          <label name="npcPageLabel" align="client" text="1 / 1" fontSize="10" fontColor="#85A9B5" horzTextAlign="center" vertTextAlign="center"/>
+        </layout>
+        <label name="npcCount" align="bottom" height="24" text="0 NPCs" fontSize="10" fontColor="#85A9B5"/>
+        <dataScopeBox name="npcListScope" align="client">
+          <recordList name="npcList" align="client" field="items" templateForm="frmSWSENPCRow" selectable="true" minQt="0" itemHeight="64" layout="vertical">
+            <event name="onResize">self:npcResize()</event>
+            <event name="onItemAdded">self:npcResize()</event>
+            <event name="onSelect">self:npcListSelected()</event>
+          </recordList>
+        </dataScopeBox>
+      </rectangle>
+      <rectangle align="client" color="#081925" strokeColor="#1B5268" strokeSize="1" padding="{left=10,right=10,top=8,bottom=8}">
+        <label name="npcEmpty" align="client" text="SELECIONE UM NPC\n\nAs fichas continuam na Biblioteca da mesa." fontSize="14" fontColor="#A8DDE9" wordWrap="true" horzTextAlign="center" vertTextAlign="center"/>
+        <scrollBox name="npcDetail" align="client" visible="false" g-cnt-line-spacing="6">
+          <label name="npcName" g="col" g-width="12" height="30" fontSize="16" fontStyle="bold" fontColor="#EFC56B"/>
+          <label name="npcIdentity" g="col" g-width="12" height="24" fontSize="10" fontColor="#85A9B5"/>
+          <rectangle name="npcOpenSheet" g="col" g-width="12" height="34" color="#04202C" strokeColor="#286074" strokeSize="1" cursor="handPoint"><label align="client" text="ABRIR FICHA COMPLETA" fontSize="11" fontStyle="bold" fontColor="#D5EFF6" horzTextAlign="center" vertTextAlign="center" hitTest="false"/><event name="onClick">self:npcOpenSheet()</event></rectangle>
+          <label name="npcHealth" g="col" g-width="12" height="28" fontSize="14" fontStyle="bold" fontColor="#71D9F1"/>
+          <label name="npcDefenses" g="col" g-width="12" height="27" fontSize="11" fontColor="#D5EFF6"/>
+          <label name="npcResources" g="col" g-width="12" height="24" fontSize="10" fontColor="#85A9B5"/>
+          <label name="npcConditionStatus" g="col" g-width="12" height="26" fontSize="11" fontColor="#EFC56B"/>
+          <label g="col" g-width="3" height="28" text="PV ATUAL" fontColor="#A8DDE9"/>
+          <edit name="npcHealthInput" g="col" g-width="4" height="28" type="number"/>
+          <rectangle name="npcSetHealth" g="col" g-width="5" height="30" color="#04202C" strokeColor="#286074" strokeSize="1" cursor="handPoint"><label align="client" text="DEFINIR PV" fontColor="#D5EFF6" horzTextAlign="center" vertTextAlign="center" hitTest="false"/><event name="onClick">self:npcApply('set')</event></rectangle>
+          <label g="col" g-width="3" height="28" text="QUANTIDADE" fontColor="#A8DDE9"/>
+          <edit name="npcAmount" g="col" g-width="3" height="28" type="number" text="1"/>
+          <rectangle name="npcDamage" g="col" g-width="3" height="30" color="#241017" strokeColor="#A45E68" strokeSize="1" cursor="handPoint"><label align="client" text="RETIRAR PV" fontSize="10" fontColor="#FF9AA4" horzTextAlign="center" vertTextAlign="center" hitTest="false"/><event name="onClick">self:npcApply('damage')</event></rectangle>
+          <rectangle name="npcHeal" g="col" g-width="3" height="30" color="#082922" strokeColor="#3C8270" strokeSize="1" cursor="handPoint"><label align="client" text="RECUPERAR" fontSize="10" fontColor="#9DE1C5" horzTextAlign="center" vertTextAlign="center" hitTest="false"/><event name="onClick">self:npcApply('heal')</event></rectangle>
+          <label g="col" g-width="12" height="38" text="Retirar PV usa o dano líquido, após redução/escudos, e consome PV temporários primeiro. Ajuste o estado e a condição conforme o resultado." fontSize="10" fontColor="#85A9B5" wordWrap="true"/>
+          <comboBox name="npcCondition" g="col" g-width="7" height="30" items="{'Normal','−1','−2','−5','−10 / metade do deslocamento','Inconsciente / indefeso'}" values="{'0','1','2','3','4','5'}"/>
+          <rectangle name="npcApplyCondition" g="col" g-width="5" height="30" color="#04202C" strokeColor="#286074" strokeSize="1" cursor="handPoint"><label align="client" text="SALVAR CONDIÇÃO" fontSize="10" fontColor="#D5EFF6" horzTextAlign="center" vertTextAlign="center" hitTest="false"/><event name="onClick">self:npcApply('condition')</event></rectangle>
+          <rectangle name="npcUndo" g="col" g-width="12" height="30" color="#04202C" strokeColor="#286074" strokeSize="1" cursor="handPoint"><label align="client" text="DESFAZER ÚLTIMO AJUSTE DE PV / CONDIÇÃO" fontSize="10" fontColor="#D5EFF6" horzTextAlign="center" vertTextAlign="center" hitTest="false"/><event name="onClick">self:npcApply('undo')</event></rectangle>
+          <label name="npcWriteStatus" g="col" g-width="12" height="34" fontSize="10" fontColor="#85A9B5" wordWrap="true"/>
+          <label g="col" g-width="12" height="26" text="ENCONTRO PRIVADO DO MESTRE" fontSize="11" fontStyle="bold" fontColor="#EFC56B"/>
+          <label g="col" g-width="3" height="28" text="INICIATIVA" fontColor="#A8DDE9"/>
+          <edit name="npcInitiativeInput" g="col" g-width="3" height="28" type="number"/>
+          <rectangle name="npcEncounterAdd" g="col" g-width="6" height="30" color="#04202C" strokeColor="#286074" strokeSize="1" cursor="handPoint"><label align="client" text="ADICIONAR / ATUALIZAR" fontSize="10" fontColor="#D5EFF6" horzTextAlign="center" vertTextAlign="center" hitTest="false"/><event name="onClick">self:npcEncounter('add')</event></rectangle>
+          <rectangle name="npcEncounterRemove" g="col" g-width="6" height="30" color="#04202C" strokeColor="#286074" strokeSize="1" cursor="handPoint"><label align="client" text="TIRAR DO ENCONTRO" fontSize="10" fontColor="#D5EFF6" horzTextAlign="center" vertTextAlign="center" hitTest="false"/><event name="onClick">self:npcEncounter('remove')</event></rectangle>
+          <rectangle name="npcNextTurn" g="col" g-width="6" height="30" color="#04202C" strokeColor="#286074" strokeSize="1" cursor="handPoint"><label align="client" text="PRÓXIMO TURNO" fontSize="10" fontColor="#D5EFF6" horzTextAlign="center" vertTextAlign="center" hitTest="false"/><event name="onClick">self:npcEncounter('next')</event></rectangle>
+          <label name="npcRound" g="col" g-width="12" height="24" text="RODADA 1" fontSize="10" fontColor="#71D9F1"/>
+          <label name="npcEncounterList" g="col" g-width="12" height="156" fontSize="11" fontColor="#D5EFF6" wordWrap="true"/>
+          <label g="col" g-width="12" height="26" text="ANOTAÇÕES PRIVADAS" fontSize="11" fontStyle="bold" fontColor="#EFC56B"/>
+          <textEditor name="npcNotes" g="col" g-width="12" height="140"/>
+          <rectangle name="npcSaveNotesButton" g="col" g-width="12" height="30" color="#04202C" strokeColor="#286074" strokeSize="1" cursor="handPoint"><label align="client" text="SALVAR ANOTAÇÕES" fontSize="10" fontColor="#D5EFF6" horzTextAlign="center" vertTextAlign="center" hitTest="false"/><event name="onClick">self:npcSaveNotes()</event></rectangle>
+          <label g="col" g-width="12" height="36" text="Iniciativa e anotações ficam neste computador, separadas por mestre e mesa. Não são enviadas aos jogadores." fontSize="10" fontColor="#85A9B5" wordWrap="true"/>
+          <label g="col" g-width="12" height="26" text="RESUMO DA FICHA" fontSize="11" fontStyle="bold" fontColor="#EFC56B"/>
+          <textEditor name="npcStatBlock" g="col" g-width="12" height="200" readOnly="true"/>
+        </scrollBox>
+      </rectangle>
+    </layout>
+  </layout>
+  <dataScopeBox name="npcNodeWatch" visible="false">
+    <dataLink fields="{'nome','raca','nep','pvTotal','pvMax','pvTemporario','conditionStep','conditionPenalty','trRef','trFort','trVon','dvs','iniciativa','forcePoints','destinyPoints','defeatedState','statBlockText'}"><event name="onChange">self:npcPaint()</event></dataLink>
+  </dataScopeBox>
+  <event name="onShow">self:npcStart()</event>
+  <event name="onHide">self:npcStop()</event>
+  <event name="onNodeReady">if self.isShowing then self:npcStart() end</event>
+  <event name="onNodeUnready">self:npcStop()</event>
+</group>

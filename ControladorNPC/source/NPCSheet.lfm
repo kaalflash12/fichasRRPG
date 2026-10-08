@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmSWSENPCSheet" formType="sheetTemplate" dataType="MestreRPG.SWSE.NPCController.Panel" title="STARWARS — CONTROLE DO MESTRE (NPCs)" align="client" theme="dark">
+  <import file="NPCPanel.xml"/>
+</form>

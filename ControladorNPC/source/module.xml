@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module sdkVersion="3.7b" originalPluginFileName="CONTROLADOR_NPC_STARWARS.rpk">
+  <id>MestreRPG.SWSE.NPCController</id>
+  <version>1.0.0</version>
+  <settings><automaticStringLocalization>false</automaticStringLocalization></settings>
+  <info lang="pt-BR">
+    <name>STARWARS — CONTROLADOR NPC DO MESTRE</name>
+    <description>Controlador separado da ficha Star Wars Saga: NPCs da mesa, busca, ficha completa, PV, condição e iniciativa privada do mestre.</description>
+    <author>MestreRPG</author>
+  </info>
+</module>

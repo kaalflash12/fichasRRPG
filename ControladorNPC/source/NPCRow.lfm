@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmSWSENPCRow" width="264" height="64" theme="dark">
+  <rectangle align="client" color="#0A202C" strokeColor="#286074" strokeSize="1" margins="{top=2,bottom=2}" padding="{left=9,right=8,top=6,bottom=6}" cursor="handPoint">
+    <event name="onClick"><![CDATA[
+      local owner=self.parent
+      for _=1,24 do
+        if not owner then break end
+        if type(owner.npcSelectId)=='function' then owner:npcSelectId(sheet.characterId);break end
+        owner=owner.parent
+      end
+    ]]></event>
+    <label align="top" height="26" field="name" fontFamily="Consolas" fontSize="12" fontStyle="bold" fontColor="#D5EFF6" vertTextAlign="center" hitTest="false"/>
+    <label align="client" field="detail" fontFamily="Consolas" fontSize="10" fontColor="#85A9B5" vertTextAlign="center" hitTest="false"/>
+  </rectangle>
+</form>
