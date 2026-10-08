@@ -1,0 +1,18 @@
+{
+  "version": "7.3.5",
+  "repository": "kaalflash12/fichasRRPG",
+  "rdk_lint_exit": 0,
+  "rdk_compile_exit": 0,
+  "compiled_forms": 19,
+  "lua_chunks_checked": 87,
+  "updater_logic_tests_passed": 32,
+  "sha256": "1461419ca986637d74ae58860cdc1924827f5eaf20a2581a3a6a5b51ac82d67a",
+  "bytes": 1959004,
+  "importer_unchanged_from_7_3_3": true,
+  "validation_scope": "RDK compile, Lua syntax and 32 updater tests under SDK mock. Native catalog registration and real native installation are not established by CI.",
+  "update_paths": [
+    "Public Auto Updater command for an approved catalog entry",
+    "RPGmeister-style RPK download in browser"
+  ],
+  "official_catalog_registration": "Pending maintainer approval; not granted by this build."
+}
