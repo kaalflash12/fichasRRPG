@@ -2,11 +2,11 @@
 
 ## Star Wars Saga — 7.3.4
 
-[RPK da ficha](releases/STARWARS_SAGA_7.3.4.rpk) · [Código-fonte](StarWarsSaga/source.zip) · [Validação da compilação](releases/STARWARS_SAGA_7.3.4_VALIDACAO.json)
+[RPK da ficha](releases/STARWARS_SAGA_7.3.4.rpk) · [Código-fonte](StarWarsSaga/source.zip) · [Validação da compilação](releases/STARWARS_SAGA_7.3.4_VALIDACAO.json) · [Teste nativo do atualizador](releases/STARWARS_SAGA_7.3.4_TESTE_NATIVO.json)
 
 Esta versão corrige o endereço do botão ATUALIZAR para `kaalflash12/fichasRRPG`. A 7.3.3 usava um repositório que não existia; é necessária uma primeira instalação da 7.3.4 para trocar esse endereço.
 
-O botão consulta `update.txt`, compara versões numéricas, baixa o RPK e valida o identificador do módulo e a versão interna antes de solicitar a instalação ao Firecast. A instalação direta depende da autorização concedida pelo Firecast ao plugin para gerenciar plugins. Publicar o canal e compilar o pacote não comprova essa autorização.
+O botão consulta `update.txt`, compara versões numéricas, baixa o RPK e valida o identificador do módulo e a versão interna antes de solicitar a instalação ao Firecast. **A instalação automática ainda está bloqueada.** No teste nativo do próprio módulo Star Wars, o manifesto e o RPK foram baixados e validados, mas o SDK respondeu: `Este plug-in não possui autorização para gerenciar plug-ins`. A instalação inicial da 7.3.4 foi concluída pelo RDK oficial. Para as próximas versões serem instaladas pelo botão, o Firecast precisa autorizar o módulo `MestreRPG.StarWarsSagaEdition` a gerenciar plugins. Essa exigência está na [documentação oficial](https://firecast.app/sdk3/BibliotecaFirecastPlugins.html).
 
 ### Importar XML da RPGmeister 3.5
 

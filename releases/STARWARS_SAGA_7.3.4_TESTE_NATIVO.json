@@ -1,0 +1,31 @@
+{
+  "version": "7.3.4",
+  "repository": "kaalflash12/fichasRRPG",
+  "native_update_test": {
+    "caller_module": "MestreRPG.StarWarsSagaEdition",
+    "diagnostic_build_version": "7.3.3",
+    "target_package_version": "7.3.4",
+    "updater_code": "Published updater with current-version constant changed to 7.3.3 to exercise an upgrade.",
+    "manifest_download": "PASS",
+    "package_download": "PASS",
+    "module_and_version_validation": "PASS",
+    "installation": "BLOCKED",
+    "sdk_message": "Este plug-in não possui autorização para gerenciar plug-ins",
+    "scope": "Native Firecast execution in the Star Wars module; a temporary in-memory form exercised the updater without opening a window or modifying character data."
+  },
+  "initial_installation": {
+    "version": "7.3.4",
+    "method": "Official RDK install",
+    "rdk_install_exit": 0,
+    "installed_sha256": "83f4c5caea414e6ab7678a96253b5796888ede8d3a8be6d66963813692b8527d",
+    "published_and_desktop_sha256": "0830e73b842ecd8a8a30b8cbe2a02e711b79de9eecd20e9e8ab291a660c0d9b7",
+    "all_lua_and_asset_payloads_identical_to_published": true,
+    "only_different_package_entry": "module.xml",
+    "compiled_forms": 19
+  },
+  "diagnostic_removed": true,
+  "screen_control_used": false,
+  "character_data_changed": false,
+  "automatic_update_ready": false,
+  "required_next_step": "Firecast must authorize the module to manage plugins; publishing the GitHub channel does not grant this permission."
+}
