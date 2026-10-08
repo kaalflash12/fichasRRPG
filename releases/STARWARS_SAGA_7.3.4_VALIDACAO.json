@@ -1,0 +1,14 @@
+{
+  "version": "7.3.4",
+  "repository": "kaalflash12/fichasRRPG",
+  "rdk_lint_exit": 0,
+  "rdk_compile_exit": 0,
+  "compiled_forms": 19,
+  "lua_chunks_checked": 87,
+  "updater_logic_tests_passed": 11,
+  "sha256": "0830e73b842ecd8a8a30b8cbe2a02e711b79de9eecd20e9e8ab291a660c0d9b7",
+  "bytes": 1957787,
+  "importer_unchanged_from_7_3_3": true,
+  "validation_scope": "RDK compile, Lua syntax and updater logic under SDK mock; no Firecast client installation test.",
+  "native_installation_authorization": "Not established by this build; enforced by Firecast.Plugins.installPlugin."
+}

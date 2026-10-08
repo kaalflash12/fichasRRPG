@@ -1,0 +1,4 @@
+SWSE-UPDATE-1
+module=MestreRPG.StarWarsSagaEdition
+version=7.3.4
+rpk=https://raw.githubusercontent.com/kaalflash12/fichasRRPG/main/releases/STARWARS_SAGA_7.3.4.rpk
