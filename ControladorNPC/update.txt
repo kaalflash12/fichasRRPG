@@ -1,0 +1,4 @@
+SWSE-UPDATE-1
+module=MestreRPG.SWSE.NPCController
+version=1.0.0
+rpk=https://raw.githubusercontent.com/kaalflash12/fichasRRPG/main/releases/CONTROLADOR_NPC_STARWARS_1.0.0.rpk

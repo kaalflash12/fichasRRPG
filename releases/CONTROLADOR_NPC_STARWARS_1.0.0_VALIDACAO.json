@@ -1,0 +1,17 @@
+{
+  "module": "MestreRPG.SWSE.NPCController",
+  "version": "1.0.0",
+  "rdk_lint_exit": 0,
+  "rdk_compile_exit": 0,
+  "compiled_forms": 3,
+  "lua_chunks_checked": 34,
+  "core_logic_tests_passed": 42,
+  "updater_logic_tests_passed": 34,
+  "sha256": "0ade24d9210c6f5aa32c74a0893142d30b9715d66dad2f87b0c4dff3abbf0f97",
+  "bytes": 126112,
+  "independent_package": true,
+  "animations": 0,
+  "character_data_changed_by_validation": false,
+  "official_catalog_registration": "PENDING",
+  "validation_scope": "Official RDK compile, Lua syntax and 42 core tests plus 34 updater tests with memory fixtures. No live room or user character changed. Rendered user window not inspected."
+}
